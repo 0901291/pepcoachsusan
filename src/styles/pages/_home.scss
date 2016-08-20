@@ -13,24 +13,30 @@
     font-style: italic;
     color: $primary;
     position: absolute;
-    top: 30%;
+    top: 50%;
     left: 40px;
+    transform: translateY(-50%);
     padding: 0;
     margin: 0;
     border-left: none;
     line-height: 32px;
     font-size: 15px;
     width: 45%;
+    text-align: center;
+    max-width: 260px;
     @include breakpoint(mobile) {
-      top: 36%;
       font-size: 20px;
       width: 50%;
+      right: 48%;
+      left: auto;
     }
     @include breakpoint(tablet) {
       line-height: 35px;
       font-size: 17px;
-      left: 60px;
+      left: 32px;
       top: 10%;
+      max-width: none;
+      transform: none;
     }
     @include breakpoint(desktop) {
       line-height: 40px;
@@ -53,16 +59,16 @@
       @include breakpoint(tablet) {
         font-size: 14px;
         margin-top: 11px;
-        margin-left: 67px;
+        margin-left: 90px;
       }
       @include breakpoint(desktop) {
         font-size: 17px;
-        margin-left: 90px;
+        margin-left: 135px;
       }
       @include breakpoint(desktop-l) {
         font-size: 18px;
         margin-top: 20px;
-        margin-left: 100px;
+        margin-left: 170px;
       }
     }
   }
