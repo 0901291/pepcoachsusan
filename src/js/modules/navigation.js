@@ -24,7 +24,7 @@ export default function navigation() {
     initMobileMenu_($(menu));
 
     logoLoader($('.circle'));
-    typeWriter(utils.isMobile() || utils.isTablet()); // Initialise typewriter module, but block it if on mobile or tablet
+    typeWriter(hasMobileMenu_()); // Initialise typewriter module, but block it if on mobile or tablet
 }
 
 /**
@@ -64,6 +64,16 @@ function initHash_() {
 }
 
 /**
+ * Method to check whether or not to use a mobile menu.
+ *
+ * @returns {Boolean} whether or not to use a mobile menu
+ * @private
+ */
+function hasMobileMenu_() {
+    return utils.isMobile() || utils.isTablet();
+}
+
+/**
  * Called on page resize.
  *
  * @private
@@ -79,7 +89,7 @@ function onResize_() {
  * @private
  */
 function checkMobile_() {
-    const isMobile = utils.isMobile() || utils.isTablet();
+    const isMobile = hasMobileMenu_();
     body.classList.toggle(CLASSES.isMobile, isMobile);
     body.classList.toggle(CLASSES.navHidden, isMobile && !body.classList.contains(CLASSES.navOpen));
 }
@@ -128,7 +138,7 @@ function onHashChange_() {
     }
 
     if(!HOME_HASH && window.location.hash === '#home') { // Empty the hash if it says '#home' and the HOME_HASH setting is set to false
-        history.pushState(1, 1, ' ');
+        history.pushState(1, '1', ' ');
     }
 }
 
@@ -142,7 +152,7 @@ function setCurrentSection_(currentSection) {
     if(currentSection.length) {
         let newLoc = currentSection.find('a').attr('href');
         newLoc = !HOME_HASH && newLoc === '#home' ? ' ' : newLoc;
-        history.pushState(1, 1, newLoc);
+        history.pushState(1, '1', newLoc);
     }
 }
 
@@ -176,12 +186,15 @@ function initMobileMenu_($menu) {
  * @private
  */
 function toggleMobileMenu_(force = '') {
+    if(!hasMobileMenu_()) {
+        return;
+    }
     const open = body.classList.contains(CLASSES.navOpen);
     const openDelay = open ? 0 : 10;
     const hiddenDelay = open ? 200 : 0;
 
     if(force !== '') {
-        setTimeout(() => body.classList.toggle(CLASSES.navOpen, force), openDelay);
+        setTimeout(() => body.classList.toggle(CLASSES.navOpen, force ? true : false), openDelay);
         setTimeout(() => body.classList.add(CLASSES.navHidden), hiddenDelay);
     } else {
         setTimeout(() => body.classList.toggle(CLASSES.navOpen), openDelay);

@@ -26,5 +26,5 @@ export default function typeWriter(block = false) {
         clearTimeout(timeOut);
       }
     }, 25);
-  };
+  }
 };

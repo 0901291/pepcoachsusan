@@ -1,9 +1,6 @@
 <?php
 session_start();
 
-//print_r(json_encode($_POST));
-//die();
-
 if(empty($_POST) || empty($_POST['form_token']) || empty($_POST['name']) || empty($_POST['email']) || empty($_POST['message'])) {
   $response = array(
     'code' => 400,

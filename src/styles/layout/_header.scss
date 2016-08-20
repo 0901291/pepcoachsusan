@@ -71,7 +71,6 @@ ul.main-menu {
     }
   }
   a {
-    display: block;
     margin: 0;
     color: inherit;
     text-align: center;
@@ -177,7 +176,7 @@ ul.main-menu {
   .nav-open & {
     span:nth-child(1), span:nth-child(4) {
       top: $span-size * 2;
-      width: 0%;
+      width: 0;
       left: 50%;
     }
     span:nth-child(2) {

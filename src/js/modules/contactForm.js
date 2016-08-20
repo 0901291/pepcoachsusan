@@ -32,7 +32,7 @@ export default function initContactForm() {
             messageSpan.innerHTML = $error[0].outerHTML;
         }
     });
-    $.validator.addMethod('emailValidation', (value, element) => {
+    $.validator.addMethod('emailValidation', (value) => {
         return ( /^[a-z0-9]+([-._][a-z0-9]+)*@([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,4}$/.test( value ) && /^(?=.{1,64}@.{4,64}$)(?=.{6,100}$).*/.test( value ) );
     }, "Vul a.u.b. een geldig e-mailadres in");
 

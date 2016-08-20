@@ -10,6 +10,7 @@ $_SESSION['form_tokens'][] = $form_token;
 $show_form_message = !empty($_SESSION['show_message']) && $_SESSION['show_message'] && !empty($_SESSION['message']);
 
 $form_message = '';
+$form_data = array();
 if($show_form_message) {
     $form_message = $_SESSION['message'];
     $form_data = $_SESSION['data'];

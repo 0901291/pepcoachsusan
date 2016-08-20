@@ -3,7 +3,7 @@ export const SCREEN_SIZES = {
     tablet: 768,
     smallDesktop: 992,
     largeDesktop: 1200
-}
+};
 
 export function isMobile() {
     return getVW_() < SCREEN_SIZES.tablet;
