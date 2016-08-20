@@ -21,12 +21,19 @@ export default function navigation() {
     $(window).on('resize.navigation', onResize_);
     $(window).on('scroll.navigation', onScroll_);
 
-    initMobileMenu_();
+    initMobileMenu_($(menu));
 
-    logoLoader();
-    typeWriter(utils.isMobile() || utils.isTablet());
+    logoLoader($('.circle'));
+    typeWriter(utils.isMobile() || utils.isTablet()); // Initialise typewriter module, but block it if on mobile or tablet
 }
 
+/**
+ * Calls one page navigation plugin.
+ *
+ * @param $menu jQuery menu object to use as menu
+ * @param offset Offset to use when navigation to a different section.
+ * @private
+ */
 function initOnePageNav_($menu, offset = 0) {
     $menu.onePageNav({
         currentClass: 'active',
@@ -36,6 +43,11 @@ function initOnePageNav_($menu, offset = 0) {
     });
 }
 
+/**
+ * Initialises everything that has to do with the hash. Makes home-link active if necessary and calls onHashChange_.
+ *
+ * @private
+ */
 function initHash_() {
     const hash = window.location.hash;
     if(hash === '' || hash === '#home') {
@@ -47,35 +59,49 @@ function initHash_() {
             onHashChange_();
         }
     } else if(hash !== '') {
-        setTimeout(() => {
-            onHashChange_();
-        }, 10);
+        setTimeout(() => onHashChange_(), 10);
     }
 }
 
+/**
+ * Called on page resize.
+ *
+ * @private
+ */
 function onResize_() {
     reinitOnePageNav_();
     checkMobile_();
 }
 
+/**
+ * Set classes to body according to mobile behaviour. Gets called on page load and page resize.
+ *
+ * @private
+ */
 function checkMobile_() {
     const isMobile = utils.isMobile() || utils.isTablet();
     body.classList.toggle(CLASSES.isMobile, isMobile);
     body.classList.toggle(CLASSES.navHidden, isMobile && !body.classList.contains(CLASSES.navOpen));
 }
 
+/**
+ * Gets called on page resize. Re-initialises the one page navigation plugin if offset has changed.
+ *
+ * @private
+ */
 function reinitOnePageNav_() {
     const _offset = getScrollOffset_();
-    if(currentOffset !== _offset) {
+    if(currentOffset !== _offset) { // Check if offset has changed so navigation has to be re-initialised
         const menu = $('.main-menu');
-        menu.find('a').off();
+        menu.find('a').off(); // 'Destroys' current initialisation of plugin
         initOnePageNav_(menu, _offset);
         currentOffset = _offset;
     }
 }
 
 /**
- * getScrollOffset returns the offset to keep in mind because of the fixed header on top, based on the current screen size.
+ * Returns the offset to keep in mind because of the fixed header on top, based on the current screen size.
+ *
  * @returns {number} Total offset to keep in mind
  * @private
  */
@@ -90,17 +116,28 @@ function getScrollOffset_() {
     return _offset + _padding;
 }
 
+/**
+ * Method that gets called when hash gets changed through the menu. Makes sure the page is scrolled to the right position on page load.
+ *
+ * @private
+ */
 function onHashChange_() {
     const currentSection = $(window.location.hash);
-    if(currentSection.length) {
+    if(currentSection.length) { // Current hash is a section on the page
         $(window).scrollTop(currentSection.offset().top + currentOffset);
     }
 
-    if(!HOME_HASH && window.location.hash === '#home') {
+    if(!HOME_HASH && window.location.hash === '#home') { // Empty the hash if it says '#home' and the HOME_HASH setting is set to false
         history.pushState(1, 1, ' ');
     }
 }
 
+/**
+ * Callback for one page navigation plugin the call when entering a new section. Method sets the current section as hash.
+ *
+ * @param currentSection automatically passed by the one page navigation plugin
+ * @private
+ */
 function setCurrentSection_(currentSection) {
     if(currentSection.length) {
         let newLoc = currentSection.find('a').attr('href');
@@ -109,28 +146,39 @@ function setCurrentSection_(currentSection) {
     }
 }
 
+/**
+ * Callback for scroll event.
+ *
+ * @private
+ */
 function onScroll_() {
     const distanceY = window.pageYOffset || document.documentElement.scrollTop;
     body.classList.toggle('small-header', distanceY > 200);
 }
 
 /**
- * Initialize the mobile menu
+ * Initialize the mobile menu.
+ *
+ * @param $menu jQuery menu object to use as menu
  * @private
  */
-function initMobileMenu_() {
+function initMobileMenu_($menu) {
     const navTrigger = body.querySelector('#nav-trigger');
     navTrigger.addEventListener('click', () => toggleMobileMenu_());
-    $(menu).find('a').on('click', closeMobileMenu_);
+    $menu.on('click', 'a', closeMobileMenu_);
     checkMobile_();
 }
 
+/**
+ * Method to call when toggling the mobile menu.
+ *
+ * @param force pass true/false to force open/close. Leave empty for toggle
+ * @private
+ */
 function toggleMobileMenu_(force = '') {
     const open = body.classList.contains(CLASSES.navOpen);
     const openDelay = open ? 0 : 10;
     const hiddenDelay = open ? 200 : 0;
-    console.log('force', force);
-    console.log(body.classList);
 
     if(force !== '') {
         setTimeout(() => body.classList.toggle(CLASSES.navOpen, force), openDelay);
@@ -139,7 +187,6 @@ function toggleMobileMenu_(force = '') {
         setTimeout(() => body.classList.toggle(CLASSES.navOpen), openDelay);
         setTimeout(() => body.classList.toggle(CLASSES.navHidden), hiddenDelay);
     }
-
 }
 
 function closeMobileMenu_() {

@@ -69,7 +69,7 @@ if($show_form_message) {
                         </li>
                     </ul>
                 </div>
-                <div class="col-xs-11 col-md-4 col-lg-5 logo-container">
+                <div class="col-xs-10 col-md-4 col-lg-5 logo-container">
                     <div class="circle">
                         <div class="arc__container">
                             <div class="arc__q arc__q--1"></div>
@@ -81,7 +81,7 @@ if($show_form_message) {
                     </div>
                     <div class="slogan-logo">Coaching, begeleiding en advies in het onderwijs</div>
                 </div>
-                <div id="nav-trigger-container" class="col-xs-1 visible-xs visible-sm">
+                <div id="nav-trigger-container" class="col-xs-2 visible-xs visible-sm">
                     <div id="nav-trigger">
                         <span></span>
                         <span></span>

@@ -1,8 +1,8 @@
-export default function logoLoader() {
+export default function logoLoader($circle) {
   const fromHidden = -90;
 
   function topAlign(degrees) {
-    return degrees - 45
+    return degrees - 45;
   }
 
   function rotate(el, degrees) {
@@ -19,12 +19,12 @@ export default function logoLoader() {
   function circle(el, normalisedValue) {
     const degrees = normalisedValue * 360;
     let counter = 1;
-    el.find('.arc__q').each(function(){
+    el.find('.arc__q').each((k, v) => {
       const angle = Math.min(counter * 90, degrees);
-      rotate($(this), fromHidden + angle);
+      rotate($(v), fromHidden + angle);
       counter++;
     });
-    if (degrees > 90) {
+    if(degrees > 90) {
       el.find('.arc__cover').css('display', 'none');
     }
   }
@@ -32,11 +32,12 @@ export default function logoLoader() {
   function animate(el, normalisedValue, current) {
     current = current || 0;
     circle(el, current);
-    if (current < normalisedValue) {
+    if(current < normalisedValue) {
       current += 0.004;
       setTimeout(() => { animate(el, normalisedValue, current); }, 1);
     }
   }
 
-  animate($('.circle'), 1);
+  animate($circle, 1);
+  $circle.addClass('init');
 };

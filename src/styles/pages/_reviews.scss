@@ -65,8 +65,11 @@
   .slick-track {
     li {
       position: relative;
-      margin: 0 50px;
+      margin: 0 8px;
       outline: none;
+      @include breakpoint(tablet) {
+        margin: 0 48px;
+      }
     }
   }
   blockquote {

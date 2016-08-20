@@ -114,9 +114,9 @@ ul.main-menu {
 .slogan-logo {
   display: none;
   vertical-align: middle;
-  padding-left: 80px;
+  padding: 0 8px 0 96px;
   font-size: 17px;
-  transition: font-size $smallHeaderTransition, top $smallHeaderTransition;
+  transition: font-size $smallHeaderTransition, top $smallHeaderTransition, padding $smallHeaderTransition;
   top: 50%;
   position: absolute;
   transform: translateY(-50%);
@@ -124,6 +124,7 @@ ul.main-menu {
   .small-header & {
     font-size: 15px;
     display: inline-block;
+    padding: 0 8px 0 72px;
   }
   &.slogan-on {
     @include breakpoint(tablet) {
