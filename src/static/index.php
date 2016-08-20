@@ -351,7 +351,7 @@ if($show_form_message) {
                                     <svg class="svg-icon icon">
                                         <use xlink:href="#mail"></use>
                                     </svg>
-                                    <span class="text">info<span class="__AT_">   </span>pepcoach.nl</span>
+                                    <span class="text">info<span class="__AT_">   </span>pepcoachsusan.nl</span>
                                 </p>
                                 <p class="has-icon">
                                     <svg class="svg-icon icon">
