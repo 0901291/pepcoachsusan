@@ -1,0 +1,85 @@
+html, body, ul, p, h1, h2, h3 {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto', sans-serif !important;
+  color: $text !important;
+  line-height: 25px;
+}
+
+h1 {
+  padding: 40px 0px;
+  font-size: 35px;
+  text-align: center;
+  color: #FFF;
+  font-weight: normal;
+  background: none repeat scroll 0% 0% #00AB9A;
+  margin: 0px;
+  line-height: 20px;
+  border-radius: 3px 3px 0 0;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+a {
+  color: #00ab9a;
+}
+
+a:hover {
+  color: #00786c;
+}
+
+img {
+  max-width: 100%;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  -webkit-appearance: none;
+  user-select: none;
+}
+
+select, textarea, input {
+  border-radius: 2px;
+}
+
+.intro-paragraph {
+  margin-bottom: 32px;
+}
+
+.rounded-corners {
+  border-radius: 2px;
+}
+
+@media screen and (min-width: 980px) and (max-width: 1199px) {
+  body {
+    font-size: 14px !important;
+  }
+  h2 {
+    font-size: 27px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 979px) {
+  body {
+    font-size: 13px !important;
+  }
+  h2 {
+    font-size: 24px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  body {
+    font-size: 15px;
+  }
+  h2 {
+    font-size: 27px;
+  }
+}

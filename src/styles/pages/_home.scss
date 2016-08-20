@@ -1,0 +1,69 @@
+#home {
+  padding-top: 87.5px;
+  @include breakpoint(desktop) {
+    padding-top: 95px;
+  }
+  .small-header & {
+    padding-top: 75px;
+  }
+  #picture-header-inner {
+    position: relative;
+  }
+  .home-intro {
+    font-style: italic;
+    color: $primary;
+    position: absolute;
+    top: 30%;
+    left: 40px;
+    padding: 0;
+    margin: 0;
+    border-left: none;
+    line-height: 32px;
+    font-size: 15px;
+    width: 45%;
+    @include breakpoint(mobile) {
+      top: 36%;
+      font-size: 20px;
+      width: 50%;
+    }
+    @include breakpoint(tablet) {
+      line-height: 35px;
+      font-size: 17px;
+      left: 60px;
+      top: 10%;
+    }
+    @include breakpoint(desktop) {
+      line-height: 40px;
+      font-size: 22px;
+      top: 16%;
+      width: 480px;
+    }
+    @include breakpoint(desktop-l) {
+      width: 550px;
+      top: 80px;
+      line-height: 48px;
+      font-size: 25px;
+      left: 60px;
+    }
+    cite {
+      color: $text;
+      display: block;
+      position: relative;
+      font-style: normal;
+      @include breakpoint(tablet) {
+        font-size: 14px;
+        margin-top: 11px;
+        margin-left: 67px;
+      }
+      @include breakpoint(desktop) {
+        font-size: 17px;
+        margin-left: 90px;
+      }
+      @include breakpoint(desktop-l) {
+        font-size: 18px;
+        margin-top: 20px;
+        margin-left: 100px;
+      }
+    }
+  }
+}

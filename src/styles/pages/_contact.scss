@@ -1,0 +1,27 @@
+#contact {
+  .has-icon {
+    .icon {
+      width: 20px;
+      height: 20px;
+      fill: $primary;
+    }
+    .text {
+      padding-left: 8px;
+    }
+    .icon, .text {
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+  p {
+    margin-bottom: 10px;
+  }
+  .quality-mark {
+    width: 49%;
+    display: inline-block;
+    img {
+      vertical-align: middle;
+      display: inline-block;
+    }
+  }
+}

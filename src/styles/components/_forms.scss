@@ -1,0 +1,48 @@
+input, textarea {
+  width: 100%;
+  max-width: 100%;
+  display: block;
+  margin-bottom: 16px;
+  padding: 4px 4px 4px 8px;
+  outline: none;
+  border: 2px solid #B4B4B4;
+  transition: border-color 0.2s ease-in;
+  &:focus {
+    border-color: $primary;
+  }
+  &.error {
+    border-color: $error;
+  }
+}
+
+label {
+  display: block;
+  .required {
+    padding-right: 16px;
+    &:after {
+      position: absolute;
+      content: '*';
+      color: $error;
+      margin-left: 4px;
+      font-size: 16px;
+    }
+  }
+  .error-message {
+    label {
+      display: inline-block;
+      font-style: italic;
+      font-size: 12px;
+      margin-bottom: 0;
+      line-height: 1;
+    }
+  }
+}
+
+input[type=submit] {
+  width: auto;
+  margin-bottom: 10px;
+}
+
+#contact-form {
+
+}

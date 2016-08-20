@@ -1,0 +1,75 @@
+#main {
+  background-color: #eee;
+  padding-bottom: 32px;
+  position: relative;
+}
+
+.page {
+  margin-bottom: 35px;
+  .container {
+    overflow: hidden;
+    padding: 0 0 5px;
+    &--inner {
+      box-shadow: 0 -1px 0 #e5e5e5, 0 0 2px rgba(#000, 0.12), 0 2px 4px rgba(#000, 0.24);
+    }
+    &--content {
+      background-color: #fff;
+      border-radius: 0 0 3px 3px;
+      padding: 16px;
+      @include breakpoint(tablet) {
+        padding: 32px;
+      }
+    }
+    @include breakpoint(tablet) {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+}
+
+.col {
+  margin-bottom: 16px;
+  @include breakpoint(tablet) {
+    margin-bottom: 0;
+  }
+  &.center {
+    text-align: center;
+  }
+  &--header {
+    margin-bottom: 16px;
+  }
+  &--icon {
+    width: 36px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  &--heading {
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 6px;
+    font-weight: 300;
+    margin-top: 10px;
+    @include breakpoint(tablet) {
+      margin-top: 0;
+    }
+  }
+  #main &-xs-12 {
+    margin-bottom: 10px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    @include breakpoint(tablet) {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  .flex-col {
+    flex: 1;
+  }
+}
+
+@import '../pages/_pages.scss';
