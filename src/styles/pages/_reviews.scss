@@ -1,5 +1,5 @@
 .reviews {
-  $pb: 60px;
+  $pb: 55px;
   $bsdef: 0 1px 3px rgba(#000, 0.12), 0 1px 2px rgba(#000, 0.24);
   $bshov: 0 3px 6px rgba(#000, 0.16), 0 3px 6px rgba(#000, 0.23);
   position: relative;
@@ -90,9 +90,15 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    bottom: -12px;
+    bottom: -8px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    @include breakpoint(tablet) {
+      bottom: -20px;
+    }
     li {
-      width: 32px;
+      max-width: 32px;
       height: 32px;
       display: inline-block;
       background-color: rgba($primary, 0);
@@ -103,6 +109,7 @@
       box-shadow: none;
       outline: none;
       margin: 0 3px;
+      flex: 1;
       &:hover, &:focus {
         box-shadow: $bshov;
       }

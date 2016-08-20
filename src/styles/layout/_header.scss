@@ -104,10 +104,22 @@ ul.main-menu {
   padding-top: 6.25px;
   padding-bottom: 6.25px;
   display: flex;
+  left: -16px;
+  transition: left $smallHeaderTransition;
+  .small-header & {
+    left: 0;
+    @include breakpoint(desktop) {
+      padding-top: 7.5px;
+      padding-bottom: 7.5px;
+    }
+  }
   @include breakpoint(desktop) {
-    padding-top: 7.5px;
-    padding-bottom: 7.5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     padding-left: 0;
+  }
+  @include breakpoint(desktop-l) {
+    left: -8px;
   }
 }
 
@@ -121,6 +133,7 @@ ul.main-menu {
   position: absolute;
   transform: translateY(-50%);
   flex: 1;
+  font-style: italic;
   .small-header & {
     font-size: 15px;
     display: inline-block;
@@ -132,8 +145,11 @@ ul.main-menu {
     }
   }
   @include breakpoint(desktop) {
-    max-width: 70%;
-    padding: 0 0 0 80px;
+    padding: 0 0 0 88px;
+    font-size: 16px;
+  }
+  @include breakpoint(desktop-l) {
+    font-size: 18px;
   }
 }
 
