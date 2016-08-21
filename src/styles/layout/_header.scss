@@ -136,15 +136,12 @@ ul.main-menu {
   transform: translateY(-50%);
   flex: 1;
   font-style: italic;
+  &.slogan-on {
+    display: inline-block;
+  }
   .small-header & {
     font-size: 15px;
-    display: inline-block !important;
     padding: 0 8px 0 72px;
-  }
-  &.slogan-on {
-    @include breakpoint(tablet) {
-      display: inline-block;
-    }
   }
   @include breakpoint(desktop) {
     padding: 0 0 0 88px;
