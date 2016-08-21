@@ -104,7 +104,6 @@ ul.main-menu {
   padding-top: 6.25px;
   padding-bottom: 6.25px;
   display: flex;
-  left: -16px;
   transition: left $smallHeaderTransition;
   .small-header & {
     left: 0;
@@ -114,6 +113,7 @@ ul.main-menu {
     }
   }
   @include breakpoint(desktop) {
+    left: -16px;
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 0;
