@@ -386,7 +386,6 @@ if($show_form_message) {
         </div>
     </footer>
 </div>
-<script src="http://192.168.2.194:8080/target/target-script-min.js#anonymous"></script>
 <script src="index.js"></script>
 </body>
 </html>
