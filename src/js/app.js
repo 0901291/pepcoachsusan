@@ -4,7 +4,11 @@ import atReplace from './modules/atReplace';
 import contactForm from './modules/contactForm';
 import reviews from './modules/reviews';
 
-document.addEventListener('DOMContentLoaded', initApp);
+if(document.readyState !== 'loading') {
+    initApp();
+} else {
+    document.addEventListener('DOMContentLoaded', initApp);
+}
 
 function initApp() {
     navigation();
