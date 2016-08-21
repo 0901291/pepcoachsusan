@@ -70,15 +70,17 @@ function mail_text($mail_text = '') {
             </table>';
 }
 
-$headers_susan = "From: " . strip_tags($post_email) . "\r\n";
-$headers_susan .= "Reply-To: ". strip_tags($post_email) . "\r\n";
+$headers_susan = "From: " . $post_name . " <info@pepcoachsusan.nl>\r\n";
+$headers_susan .= "Reply-To: " . $post_name . " <" . $post_email . ">\r\n";
 $headers_susan .= "MIME-Version: 1.0\r\n";
 $headers_susan .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+$headers_susan .= 'X-Mailer: PHP/' . phpversion();
 
 $headers_visitor = "From: PEP coach <info@pepcoachsusan.nl>\r\n";
 $headers_visitor .= "Reply-To: PEP coach <info@pepcoachsusan.nl>\r\n";
 $headers_visitor .= "MIME-Version: 1.0\r\n";
 $headers_visitor .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+$headers_visitor .= 'X-Mailer: PHP/' . phpversion();
 
 if(mail($to, $subject_susan, $mail_susan, $headers_susan) && mail($post_email, $subject_visitor, $mail_visitor, $headers_visitor)) {
   $response = array(
