@@ -35,7 +35,7 @@ if(!filter_var($post_email, FILTER_VALIDATE_EMAIL)) {
   returnResponse();
 }
 
-$to = 'ianwensink@gmail.com';
+$to = 'info@pepcoachsusan.nl';
 $subject_susan = 'Contactformulier www.pepcoachsusan.nl door '.$post_name;
 $subject_visitor = 'Bevestiging ingevuld contactformulier www.pepcoachsusan.nl';
 $mail_text_susan = 'Zojuist is het contactformulier op www.pepcoachsusan.nl verstuurd. Hieronder vind je de gegevens:';
