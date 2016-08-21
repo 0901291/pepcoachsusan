@@ -99,6 +99,7 @@
     }
     li {
       max-width: 32px;
+      min-width: 32px;
       height: 32px;
       display: inline-block;
       background-color: rgba($primary, 0);
@@ -109,7 +110,7 @@
       box-shadow: none;
       outline: none;
       margin: 0 3px;
-      flex: 1;
+      position: relative;
       &:hover, &:focus {
         box-shadow: $bshov;
       }
@@ -124,9 +125,12 @@
       }
       button {
         outline: none;
-        position: relative;
+        position: absolute;
         top: calc(50% + 1px);
-        transform: translateY(-50%) translateX(0%);
+        transform: translateX(-50%) translateY(-50%);
+        margin: auto;
+        top: 50%;
+        left: 50%;
       }
     }
   }
