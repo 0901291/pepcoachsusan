@@ -26,9 +26,8 @@ if($show_form_message) {
     <title>Welkom | PEP coach</title>
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
     <link href="favicon.ico" rel="shortcut icon">
-<!--    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i" rel="stylesheet">-->
-<!--    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" rel="stylesheet">-->
-<!--    <link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" rel="stylesheet">
     <link href="index.css" rel="stylesheet">
 </head>
 <body class="nav-hidden">
@@ -379,15 +378,16 @@ if($show_form_message) {
             </div>
         </section>
     </main>
-    <!--<footer>-->
-    <!--<div class="container">-->
-    <!--<p>-->
-    <!--Copyright © PEP coach | 06-12713919 | info@pepcoachsusan.nl | All rights reserved | <a href="img/Algemene-voorwaarden.pdf">Algemene Voorwaarden</a>-->
-    <!--</p>-->
-    <!--</div>-->
-    <!--</footer>-->
+    <footer>
+        <div class="container">
+            <p>
+                &copy; <?php print date('Y'); ?> PEP coach <span class="divider">|</span> 06-12713919 <span class="divider">|</span> info<span class="__AT_">   </span>pepcoachsusan.nl <span class="divider">|</span> All rights reserved <span class="divider">|</span> <a href="img/Algemene-voorwaarden.pdf">Algemene Voorwaarden</a>
+            </p>
+        </div>
+    </footer>
 </div>
 <script src="http://192.168.2.194:8080/target/target-script-min.js#anonymous"></script>
 <script src="index.js"></script>
 </body>
 </html>
+<!-- LAST UPDATED 08/21/2016 -->

@@ -1,6 +1,10 @@
 footer {
-  position: fixed;
+  background-color: $bgcolor;
+  text-align: center;
   width: 100%;
   bottom: 0;
   z-index: 3;
+  .divider {
+    padding: 0 24px;
+  }
 }
