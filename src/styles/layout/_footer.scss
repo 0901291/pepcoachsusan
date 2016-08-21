@@ -1,10 +1,24 @@
-footer {
+.footer {
   background-color: $bgcolor;
   text-align: center;
   width: 100%;
-  bottom: 0;
+  padding-bottom: 8px;
+  position: relative;
   z-index: 3;
-  .divider {
-    padding: 0 24px;
+  &--item {
+    display: block;
+    line-height: 2em;
+    @include breakpoint(tablet) {
+      display: inline-block;
+      &:after {
+        content: '|';
+        padding: 0 24px;
+      }
+      &:last-of-type {
+        &:after {
+          display: none;
+        }
+      }
+    }
   }
 }

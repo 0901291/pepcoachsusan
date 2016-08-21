@@ -24,7 +24,7 @@ export default function navigation() {
     initMobileMenu_($(menu));
 
     logoLoader($('.circle'));
-    typeWriter(hasMobileMenu_()); // Initialise typewriter module, but block it if on mobile or tablet
+    typeWriter();
 }
 
 /**
@@ -127,7 +127,7 @@ function getScrollOffset_() {
 }
 
 /**
- * Method that gets called when hash gets changed through the menu. Makes sure the page is scrolled to the right position on page load.
+ * Method that gets called when hash gets changed through the address bar. Makes sure the page is scrolled to the right position on page load.
  *
  * @private
  */
@@ -135,6 +135,7 @@ function onHashChange_() {
     const currentSection = $(window.location.hash);
     if(currentSection.length) { // Current hash is a section on the page
         $(window).scrollTop(currentSection.offset().top + currentOffset);
+        console.log(currentOffset);
     }
 
     if(!HOME_HASH && window.location.hash === '#home') { // Empty the hash if it says '#home' and the HOME_HASH setting is set to false

@@ -104,9 +104,11 @@ ul.main-menu {
   padding-top: 6.25px;
   padding-bottom: 6.25px;
   display: flex;
-  transition: left $smallHeaderTransition;
+  transition: left $smallHeaderTransition, height $smallHeaderTransition;
+  height: $headerHeight-m;
   .small-header & {
     left: 0;
+    height: $headerHeight-m-small;
     @include breakpoint(desktop) {
       padding-top: 7.5px;
       padding-bottom: 7.5px;
@@ -136,7 +138,7 @@ ul.main-menu {
   font-style: italic;
   .small-header & {
     font-size: 15px;
-    display: inline-block;
+    display: inline-block !important;
     padding: 0 8px 0 72px;
   }
   &.slogan-on {

@@ -378,10 +378,10 @@ if($show_form_message) {
             </div>
         </section>
     </main>
-    <footer>
+    <footer class="footer">
         <div class="container">
             <p>
-                &copy; <?php print date('Y'); ?> PEP coach <span class="divider">|</span> 06-12713919 <span class="divider">|</span> info<span class="__AT_">   </span>pepcoachsusan.nl <span class="divider">|</span> All rights reserved <span class="divider">|</span> <a href="img/Algemene-voorwaarden.pdf">Algemene Voorwaarden</a>
+                <span class="footer--item">&copy; <?php print date('Y'); ?> PEP&nbsp;coach</span><span class="footer--item">06-12713919</span><span class="footer--item">info<span class="__AT_">   </span>pepcoachsusan.nl</span><span class="footer--item">All&nbsp;rights&nbsp;reserved</span><span class="footer--item"><a target="_blank" href="/img/Algemene-voorwaarden.pdf">Algemene&nbsp;Voorwaarden</a></span>
             </p>
         </div>
     </footer>

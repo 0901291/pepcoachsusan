@@ -21,7 +21,11 @@ if(empty($_SESSION['form_tokens']) || empty($_POST['form_token']) || !in_array($
   returnResponse();
 }
 
-if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+$post_name = htmlspecialchars($_POST['name']);
+$post_email = htmlspecialchars($_POST['email']);
+$post_message = htmlspecialchars($_POST['message']);
+
+if(!filter_var($post_email, FILTER_VALIDATE_EMAIL)) {
   $response = array(
     'code' => 400,
     'message' => 'Vul a.u.b. een geldig e-mailadres in.',
@@ -32,24 +36,24 @@ if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
 }
 
 $to = 'ianwensink@gmail.com';
-$subject = 'Contactformulier www.pepcoachsusan.nl door '.$_POST['name'];
+$subject = 'Contactformulier www.pepcoachsusan.nl door '.$post_name;
 $message = '<div>
-                <img style="display:inline-block;vertical-align:middle;" width="100" height="100" src="http://'.$_SERVER['HTTP_HOST'].'/img/logo-def-pepcoach.png">
-                <h1 style="display:inline-block;vertical-align:middle;padding-left:16px;">Contactformulier www.pepcoachsusan.nl</h1>
+                <!--<img style="display:inline-block;vertical-align:middle;" width="100" height="100" src="http://'.$_SERVER['HTTP_HOST'].'/img/logo-def-pepcoach.png">-->
+                <h1 style="display:inline-block;vertical-align:middle;padding-left:16px;padding-left:0px;">Contactformulier www.pepcoachsusan.nl</h1>
             </div>
             <p>Zojuist is het contactformulier op www.pepcoachsusan.nl verstuurd. Hieronder vind je de gegevens:</p>
             <table>
                 <tr>
                     <td>Naam:</td>
-                    <td>'.$_POST['name'].'</td>
+                    <td>'.$post_name.'</td>
                 </tr>
                 <tr>
                     <td>E-mailadres:</td>
-                    <td>'.$_POST['email'].'</td>
+                    <td>'.$post_email.'</td>
                 </tr>
                 <tr>
                     <td>Bericht:</td>
-                    <td>'.$_POST['message'].'</td>
+                    <td>'.$post_message.'</td>
                 </tr>
                 <tr>
                     <td>Tijdstip:</td>
@@ -57,8 +61,8 @@ $message = '<div>
                 </tr>
             </table>';
 
-$headers = "From: " . strip_tags($_POST['email']) . "\r\n";
-$headers .= "Reply-To: ". strip_tags($_POST['email']) . "\r\n";
+$headers = "From: " . strip_tags($post_email) . "\r\n";
+$headers .= "Reply-To: ". strip_tags($post_email) . "\r\n";
 $headers .= "MIME-Version: 1.0\r\n";
 $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
