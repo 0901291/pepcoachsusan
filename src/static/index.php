@@ -314,21 +314,21 @@ if($show_form_message) {
                                             <span class="required">Naam</span>
                                             <span class="error-message" id="error-message--name"></span>
                                         </label>
-                                        <input required type="text" id="name" name="name" value="<?php echo $show_form_message ? $form_data['name'] : ''; ?>">
+                                        <input required type="text" id="name" name="name" value="<?php echo $show_form_message && !empty($form_data['name']) ? $form_data['name'] : ''; ?>">
                                     </div>
                                     <div class="fieldset">
                                         <label for="email">
                                             <span class="required">E-mailadres</span>
                                             <span class="error-message" id="error-message--email"></span>
                                         </label>
-                                        <input required type="text" id="email" name="email" value="<?php echo $show_form_message ? $form_data['email'] : ''; ?>">
+                                        <input required type="email" id="email" name="email" value="<?php echo $show_form_message && !empty($form_data['email']) ? $form_data['email'] : ''; ?>">
                                     </div>
                                     <div class="fieldset">
                                         <label for="message">
                                             <span class="required">Bericht</span>
                                             <span class="error-message" id="error-message--message"></span>
                                         </label>
-                                        <textarea required id="message" name="message" rows="4"><?php echo $show_form_message ? $form_data['message'] : ''; ?></textarea>
+                                        <textarea required id="message" name="message" rows="4"><?php echo $show_form_message && !empty($form_data['message']) ? $form_data['message'] : ''; ?></textarea>
                                     </div>
                                     <input type="hidden" name="form_token" value="<?php print $form_token ?>">
                                     <div class="text-center">

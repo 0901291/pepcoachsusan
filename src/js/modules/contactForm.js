@@ -21,11 +21,11 @@ export default function initContactForm() {
             }
         },
         messages: {
-            name: "Dit veld is verplicht",
+            name: 'Dit veld is verplicht',
             email: {
-                required: "Dit veld is verplicht"
+                required: 'Dit veld is verplicht'
             },
-            message: "Dit veld is verplicht"
+            message: 'Dit veld is verplicht'
         },
         errorPlacement: ($error, $element) => {
             const messageSpan = form.querySelector(`#error-message--${$element.attr('name')}`);
@@ -34,7 +34,9 @@ export default function initContactForm() {
     });
     $.validator.addMethod('emailValidation', (value) => {
         return ( /^[a-z0-9]+([-._][a-z0-9]+)*@([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,4}$/.test( value ) && /^(?=.{1,64}@.{4,64}$)(?=.{6,100}$).*/.test( value ) );
-    }, "Vul a.u.b. een geldig e-mailadres in");
+    }, 'Vul a.u.b. een geldig e-mailadres in');
+
+    $.validator.messages.email = 'Vul a.u.b. een geldig e-mailadres in';
 
     $form.on('submit', e => {
         if(!$form.valid()) {

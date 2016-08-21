@@ -135,7 +135,6 @@ function onHashChange_() {
     const currentSection = $(window.location.hash);
     if(currentSection.length) { // Current hash is a section on the page
         $(window).scrollTop(currentSection.offset().top + currentOffset);
-        console.log(currentOffset);
     }
 
     if(!HOME_HASH && window.location.hash === '#home') { // Empty the hash if it says '#home' and the HOME_HASH setting is set to false

@@ -21,9 +21,9 @@ if(empty($_SESSION['form_tokens']) || empty($_POST['form_token']) || !in_array($
   returnResponse();
 }
 
-$post_name = htmlspecialchars($_POST['name']);
-$post_email = htmlspecialchars($_POST['email']);
-$post_message = htmlspecialchars($_POST['message']);
+$post_name = htmlspecialchars(strip_tags($_POST['name']));
+$post_email = htmlspecialchars(strip_tags($_POST['email']));
+$post_message = htmlspecialchars(strip_tags($_POST['message']));
 
 if(!filter_var($post_email, FILTER_VALIDATE_EMAIL)) {
   $response = array(
@@ -36,12 +36,20 @@ if(!filter_var($post_email, FILTER_VALIDATE_EMAIL)) {
 }
 
 $to = 'ianwensink@gmail.com';
-$subject = 'Contactformulier www.pepcoachsusan.nl door '.$post_name;
-$message = '<div>
-                <!--<img style="display:inline-block;vertical-align:middle;" width="100" height="100" src="http://'.$_SERVER['HTTP_HOST'].'/img/logo-def-pepcoach.png">-->
-                <h1 style="display:inline-block;vertical-align:middle;padding-left:16px;padding-left:0px;">Contactformulier www.pepcoachsusan.nl</h1>
+$subject_susan = 'Contactformulier www.pepcoachsusan.nl door '.$post_name;
+$subject_visitor = 'Bevestiging ingevuld contactformulier www.pepcoachsusan.nl';
+$mail_text_susan = 'Zojuist is het contactformulier op www.pepcoachsusan.nl verstuurd. Hieronder vind je de gegevens:';
+$mail_text_visitor = 'Zojuist heeft u het contactformulier op www.pepcoachsusan.nl ingevuld. Deze is succesvol ontvangen. Ik zal zo spoedig mogelijk contact met u opnemen. Hieronder vind u de gegevens zoals deze zijn ingevuld.';
+$mail_susan = mail_text($mail_text_susan);
+$mail_visitor = mail_text($mail_text_visitor);
+
+function mail_text($mail_text = '') {
+  global $post_name, $post_email, $post_message;
+  return   '<div>
+                <img style="display:inline-block;vertical-align:middle;" width="100" height="100" src="http://'.$_SERVER['HTTP_HOST'].'/img/logo-def-pepcoach.png">
+                <h1 style="display:inline-block;vertical-align:middle;padding-left:16px;">Contactformulier www.pepcoachsusan.nl</h1>
             </div>
-            <p>Zojuist is het contactformulier op www.pepcoachsusan.nl verstuurd. Hieronder vind je de gegevens:</p>
+            <p>'.$mail_text.'</p>
             <table>
                 <tr>
                     <td>Naam:</td>
@@ -60,13 +68,19 @@ $message = '<div>
                     <td>'.date('H:i d-m-Y').'</td>
                 </tr>
             </table>';
+}
 
-$headers = "From: " . strip_tags($post_email) . "\r\n";
-$headers .= "Reply-To: ". strip_tags($post_email) . "\r\n";
-$headers .= "MIME-Version: 1.0\r\n";
-$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+$headers_susan = "From: " . strip_tags($post_email) . "\r\n";
+$headers_susan .= "Reply-To: ". strip_tags($post_email) . "\r\n";
+$headers_susan .= "MIME-Version: 1.0\r\n";
+$headers_susan .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
-if(mail($to, $subject, $message, $headers)) {
+$headers_visitor = "From: PEP coach <info@pepcoachsusan.nl>\r\n";
+$headers_visitor .= "Reply-To: PEP coach <info@pepcoachsusan.nl>\r\n";
+$headers_visitor .= "MIME-Version: 1.0\r\n";
+$headers_visitor .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
+if(mail($to, $subject_susan, $mail_susan, $headers_susan) && mail($post_email, $subject_visitor, $mail_visitor, $headers_visitor)) {
   $response = array(
     'code' => 200,
     'message' => 'Het formulier is succesvol verzonden! Ik zal zo snel mogelijk contact met u opnemen.',
