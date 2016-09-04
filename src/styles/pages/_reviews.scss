@@ -3,9 +3,6 @@
   $bsdef: 0 1px 3px rgba(#000, 0.12), 0 1px 2px rgba(#000, 0.24);
   $bshov: 0 3px 6px rgba(#000, 0.16), 0 3px 6px rgba(#000, 0.23);
   position: relative;
-  .reviews-container {
-    position: relative;
-  }
   &__nav {
     position: absolute;
     z-index: 1;
@@ -48,7 +45,7 @@
         right: 0;
         bottom: 0;
         left: 0;
-        fill: #fff;
+        fill: #FFF;
       }
     }
     &--prev {
@@ -72,19 +69,34 @@
       }
     }
   }
-  blockquote {
-    border-left-color: $primary;
+  &-container {
     position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  cite {
-    display: block;
-    font-size: 16px;
-    color: $primary;
-    position: absolute;
-    right: 16px;
-    bottom: -16px;
+    li {
+      list-style: none outside none;
+    }
+    blockquote {
+      border-left-color: $primary;
+      position: relative;
+      margin-bottom: 0;
+      @at-root .slick-initialized#{&} {
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+    cite {
+      display: block;
+      font-size: 16px;
+      color: $primary;
+      margin: 10px 0 20px;
+      padding-left: 32px;
+      @at-root .slick-initialized#{&} {
+        position: absolute;
+        right: 16px;
+        bottom: -16px;
+        margin: 0;
+        padding-left: 0;
+      }
+    }
   }
   .slick-dots {
     position: absolute;

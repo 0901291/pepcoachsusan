@@ -1,7 +1,7 @@
 import '../vendor/slick.min';
 import * as utils from './utils';
 
-const reviewsContainer = document.querySelector('#reviews-container');
+const reviewsContainer = document.querySelector('.reviews-container');
 const $reviewsContainer = $(reviewsContainer);
 
 export default function initReviews() {
