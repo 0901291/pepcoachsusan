@@ -2,50 +2,34 @@ const path                  = require('path');
 const webpack               = require('webpack');
 const WebpackNotifierPlugin = require('webpack-notifier');
 const CopyWebpackPlugin     = require('copy-webpack-plugin');
+const ExtractTextPlugin     = require("extract-text-webpack-plugin");
 const autoprefixer          = require('autoprefixer');
 const precss                = require('precss');
-const _                     = require('lodash');
+const failPlugin = require('webpack-fail-plugin');
 
-const args = require('minimist')(process.argv.slice(2));
+const IS_DEV = process.env.NODE_ENV !== 'production';
 
-const env          = args.env || 'dev';
-const serverConfig = require(path.resolve(__dirname, `../serverConfig.${env}.js`));
+const serverConfig = {
+    outputName: "index",
+    srcPath: path.resolve(__dirname, "../src/"),
+    publicPath: path.resolve(__dirname, "../dist")
+};
 
-const outputName = getOutputName_();
-
-function getOutputName_() {
-    try {
-        return serverConfig.outputName;
-    } catch (e) {
-        console.log('Cannot find serverConfig.js file. Using default app.js output file. \n');
-    }
-    return 'index';
-}
-
-const baseConfig = {
+const config = {
     entry: {
         index: ['babel-polyfill', 'whatwg-fetch', path.resolve(__dirname, serverConfig.srcPath + "/js/index.js")]
     },
     output: {
         path: path.resolve(__dirname, serverConfig.publicPath),
-        filename: `${outputName}.js`
+        filename: `${serverConfig.outputName}.js`
     },
-    resolve: {
-        root: [path.resolve(__dirname, serverConfig.srcPath + "/js"), path.resolve(__dirname, '../node_modules')],
-        extensions: ['', '.js']
-    },
-    resolveLoader: {
-        root: [path.resolve(__dirname, '../node_modules')]
-    },
+    target: 'web',
     module: {
         loaders: [
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: 'babel',
-                query: {
-                    presets: ['babel-preset-es2015', 'babel-preset-stage-0'].map(require.resolve)
-                }
+                loader: 'babel'
             },
             {
                 test: /\.(jpe?g|png|gif)$/i,
@@ -57,11 +41,16 @@ const baseConfig = {
                     name: '[name]',
                     prefixize: true
                 })
+            },
+            {
+                test: [/\.css$/, /\.scss$/],
+                loader: ExtractTextPlugin.extract('style-loader',
+                  'css-loader?sourceMap!sass-loader?outputStyle=expanded&sourceMap=true&sourceMapContents=true')
+            },
+            {
+                test: /\.(ttf|eot|woff(2)?)(\?\S*)?$/,
+                loader: 'file-loader',
             }
-            // {
-            //     test: /vendor\/.+\.(jsx|js)$/,
-            //     loader: 'imports?define=>false,jQuery=jquery,$=jquery,this=>window'
-            // }
         ]
     },
     postcss: function () {
@@ -69,13 +58,14 @@ const baseConfig = {
     },
     plugins: [
         new WebpackNotifierPlugin({
-            contentImage: path.join(__dirname, '../assets/logo-def-pepcoach.png')
+            contentImage: path.join(__dirname, './assets/logo-def-pepcoach.png')
         }),
         new CopyWebpackPlugin([
             {
                 from: path.resolve(__dirname, serverConfig.srcPath + "/static"),
                 to: path.resolve(__dirname, serverConfig.publicPath)
-            }, {
+            },
+            {
                 from: path.resolve(__dirname, serverConfig.srcPath + "/img"),
                 to: path.resolve(__dirname, `${serverConfig.publicPath}/img`)
             },
@@ -88,12 +78,26 @@ const baseConfig = {
             jQuery: 'jquery',
             $: 'jquery',
             'window.jQuery': 'jquery'
-        })
+        }),
+        new ExtractTextPlugin("[name].css"),
+        failPlugin
     ]
 };
 
-var config = _.merge({
-    entry: serverConfig.entry
-}, baseConfig);
+if (IS_DEV) {
+} else {
+    config.plugins.push(
+      new webpack.DefinePlugin({
+          'process.env.NODE_ENV': JSON.stringify('production')
+      }),
+      new webpack.optimize.OccurrenceOrderPlugin(),
+      new webpack.optimize.DedupePlugin(),
+      new webpack.optimize.UglifyJsPlugin({
+          compress: {
+              warnings: false
+          }
+      })
+    );
+}
 
 module.exports = config;
