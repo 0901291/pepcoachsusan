@@ -383,11 +383,9 @@ if($show_form_message) {
     </div>
   </footer>
 </div>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" media="none" onload="if(media!='all')media='all'">
-<noscript><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"></noscript>
 <link rel="stylesheet" href="index.css" media="none" onload="if(media!='all')media='all'">
 <noscript><link rel="stylesheet" href="index.css"></noscript>
 <script async src="index.js"></script>
 </body>
 </html>
-<!-- LAST UPDATED 08/21/2016 -->
+<!-- LAST UPDATED 09/04/2016 -->
