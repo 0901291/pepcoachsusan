@@ -126,18 +126,24 @@ ul.main-menu {
 }
 
 .slogan-logo {
-  display: none;
+  opacity: 0;
   vertical-align: middle;
   padding: 0 8px 0 96px;
-  font-size: 17px;
-  transition: font-size $smallHeaderTransition, top $smallHeaderTransition, padding $smallHeaderTransition;
+  font-size: 13px;
+  transition: font-size $smallHeaderTransition, top $smallHeaderTransition, padding $smallHeaderTransition, opacity $smallHeaderTransition;
   top: 50%;
   position: absolute;
   transform: translateY(-50%);
   flex: 1;
   font-style: italic;
-  &.slogan-on {
-    display: inline-block;
+  .small-header &.slogan-on {
+    opacity: 1;
+  }
+  @include breakpoint(tablet) {
+    font-size: 17px;
+    &.slogan-on {
+      opacity: 1;
+    }
   }
   .small-header & {
     font-size: 15px;
