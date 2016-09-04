@@ -104,7 +104,7 @@
     transform: translateX(-50%);
     bottom: -8px;
     width: 100%;
-    display: flex;
+    display: flex !important;
     justify-content: center;
     @include breakpoint(tablet) {
       bottom: -20px;
