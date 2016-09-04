@@ -161,7 +161,7 @@ if($show_form_message) {
                   <img class="col--icon" src="img/logo-def-pepcoach.png" alt=""/>
                   <h2 class="col--heading">Docent</h2>
                 </div>
-                <p>Als docent sta ik ingeschreven in het lerarenregister. Ik bevoegd om in het MBO, VMBO, PRO en (V)SO lessen te verzorgen in
+                <p>Als docent sta ik ingeschreven in het lerarenregister. Ik ben bevoegd om in het MBO, VMBO, PRO en (V)SO lessen te verzorgen in
                   het vakgebied omgangskunde.</p>
               </div>
             </div>
